@@ -1,568 +1,649 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>19 · Iván</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>19 · Iván</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  :root {
-    --oro: #d4af37;
-    --oro-claro: #f4d97a;
-    --oro-suave: rgba(212, 175, 55, 0.7);
-    --negro: #0a0a0a;
-  }
+    :root {
+      --oro: #d4af37;
+      --oro-claro: #f4d97a;
+      --oro-suave: rgba(212, 175, 55, 0.7);
+      --negro: #0a0a0a;
+    }
 
-  body {
-    background: var(--negro);
-    color: white;
-    font-family: 'Cormorant Garamond', serif;
-    overflow: hidden;
-    height: 100vh;
-  }
+    body {
+      background: var(--negro);
+      color: white;
+      font-family: 'Cormorant Garamond', serif;
+      overflow: hidden;
+      height: 100vh;
+    }
 
-  /* ====== PANTALLA INICIAL ====== */
-  #inicio {
-    position: fixed;
-    inset: 0;
-    background: var(--negro);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    text-align: center;
-    transition: opacity 1.5s ease;
-  }
+    /* ====== PANTALLA INICIAL ====== */
+    #inicio {
+      position: fixed;
+      inset: 0;
+      background: var(--negro);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      text-align: center;
+      transition: opacity 1.5s ease;
+    }
 
-  #inicio.fuera {
-    opacity: 0;
-    pointer-events: none;
-  }
+    #inicio.fuera {
+      opacity: 0;
+      pointer-events: none;
+    }
 
-  #inicio .saludo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
-    color: var(--oro-suave);
-    margin-bottom: 8px;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    font-weight: 300;
-  }
+    #inicio .saludo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      color: var(--oro-suave);
+      margin-bottom: 8px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
 
-  #inicio h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 88px;
-    font-weight: 700;
-    color: var(--oro);
-    margin-bottom: 16px;
-    letter-spacing: 6px;
-    text-shadow: 0 0 30px rgba(212,175,55,0.3);
-  }
+    #inicio h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 88px;
+      font-weight: 700;
+      color: var(--oro);
+      margin-bottom: 16px;
+      letter-spacing: 6px;
+      text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+    }
 
-  #inicio p {
-    color: rgba(255,255,255,0.65);
-    font-size: 22px;
-    font-style: italic;
-    margin-bottom: 50px;
-    letter-spacing: 2px;
-  }
+    #inicio p {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 22px;
+      font-style: italic;
+      margin-bottom: 50px;
+      letter-spacing: 2px;
+    }
 
-  .btn-abrir {
-    background: transparent;
-    color: var(--oro);
-    border: 1px solid var(--oro);
-    padding: 18px 60px;
-    font-family: 'Playfair Display', serif;
-    font-size: 14px;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.4s ease;
-  }
+    .btn-abrir {
+      background: transparent;
+      color: var(--oro);
+      border: 1px solid var(--oro);
+      padding: 18px 60px;
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
 
-  .btn-abrir:hover {
-    background: var(--oro);
-    color: var(--negro);
-    box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
-    letter-spacing: 8px;
-  }
+    .btn-abrir:hover {
+      background: var(--oro);
+      color: var(--negro);
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
+      letter-spacing: 8px;
+    }
 
-  /* ====== FONDO SLIDESHOW ====== */
-  #fondo { position: fixed; inset: 0; z-index: 0; }
+    /* ====== FONDO SLIDESHOW ====== */
+    #fondo {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
 
-  .slide {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 3s ease-in-out;
-    transform: scale(1);
-    animation: kenburns 20s ease-in-out infinite alternate;
-  }
+    .slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 3s ease-in-out;
+      transform: scale(1);
+      animation: kenburns 20s ease-in-out infinite alternate;
+    }
 
-  .slide.activa { opacity: 1; }
+    .slide.activa {
+      opacity: 1;
+    }
 
-  @keyframes kenburns {
-    0%   { transform: scale(1); }
-    100% { transform: scale(1.08); }
-  }
+    @keyframes kenburns {
+      0% {
+        transform: scale(1);
+      }
 
-  /* ====== OVERLAY OSCURO ELEGANTE ====== */
-  #overlay {
-    position: fixed;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at center, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.85) 100%),
-      linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.6) 100%);
-    z-index: 1;
-  }
+      100% {
+        transform: scale(1.08);
+      }
+    }
 
-  /* ====== CANVAS FUEGOS ====== */
-  #fuegos {
-    position: fixed;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-  }
+    /* ====== OVERLAY OSCURO ELEGANTE ====== */
+    #overlay {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at center, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.85) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, transparent 30%, transparent 70%, rgba(0, 0, 0, 0.6) 100%);
+      z-index: 1;
+    }
 
-  /* ====== CONTENIDO PRINCIPAL ====== */
-  #contenido {
-    position: relative;
-    z-index: 3;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    opacity: 0;
-    transition: opacity 2s ease 1.5s;
-  }
+    /* ====== CANVAS FUEGOS ====== */
+    #fuegos {
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
 
-  #contenido.visible { opacity: 1; }
+    /* ====== CONTENIDO PRINCIPAL ====== */
+    #contenido {
+      position: relative;
+      z-index: 3;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 2s ease 1.5s;
+    }
 
-  .fecha {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    color: var(--oro-suave);
-    letter-spacing: 10px;
-    text-transform: uppercase;
-    margin-bottom: 30px;
-    font-weight: 300;
-  }
+    #contenido.visible {
+      opacity: 1;
+    }
 
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 160px;
-    font-weight: 700;
-    color: var(--oro);
-    text-shadow:
-      0 0 40px rgba(212, 175, 55, 0.5),
-      0 4px 12px rgba(0,0,0,0.6);
-    line-height: 1;
-    margin: 0;
-    letter-spacing: 12px;
-    background: linear-gradient(180deg, #f4d97a 0%, #d4af37 50%, #aa8c2c 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+    .fecha {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      color: var(--oro-suave);
+      letter-spacing: 10px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
 
-  .ornament {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    margin: 30px 0;
-    color: var(--oro);
-  }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 160px;
+      font-weight: 700;
+      color: var(--oro);
+      text-shadow:
+        0 0 40px rgba(212, 175, 55, 0.5),
+        0 4px 12px rgba(0, 0, 0, 0.6);
+      line-height: 1;
+      margin: 0;
+      letter-spacing: 12px;
+      background: linear-gradient(180deg, #f4d97a 0%, #d4af37 50%, #aa8c2c 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-  .ornament-line {
-    width: 100px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--oro), transparent);
-  }
+    .ornament {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin: 30px 0;
+      color: var(--oro);
+    }
 
-  .ornament-symbol { font-size: 18px; }
+    .ornament-line {
+      width: 100px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--oro), transparent);
+    }
 
-  .edad {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    color: white;
-    font-style: italic;
-    font-weight: 400;
-    letter-spacing: 14px;
-    text-transform: uppercase;
-    margin-bottom: 40px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-  }
+    .ornament-symbol {
+      font-size: 18px;
+    }
 
-  .mensaje {
-    max-width: 640px;
-    font-size: 22px;
-    line-height: 1.8;
-    color: rgba(255,255,255,0.9);
-    font-style: italic;
-    margin-bottom: 50px;
-    letter-spacing: 0.5px;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.7);
-  }
+    .edad {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      color: white;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 14px;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
 
-  .mensaje::before, .mensaje::after {
-    content: '"';
-    color: var(--oro);
-    font-size: 32px;
-    margin: 0 4px;
-  }
+    .mensaje {
+      max-width: 640px;
+      font-size: 22px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.9);
+      font-style: italic;
+      margin-bottom: 50px;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+    }
 
-  /* ====== CUENTA ATRÁS ====== */
-  .cuenta {
-    display: flex;
-    gap: 36px;
-    margin-top: 20px;
-  }
+    .mensaje::before,
+    .mensaje::after {
+      content: '"';
+      color: var(--oro);
+      font-size: 32px;
+      margin: 0 4px;
+    }
 
-  .cuenta-bloque {
-    text-align: center;
-    min-width: 80px;
-  }
+    /* ====== CUENTA ATRÁS ====== */
+    .cuenta {
+      display: flex;
+      gap: 36px;
+      margin-top: 20px;
+    }
 
-  .cuenta-valor {
-    font-family: 'Playfair Display', serif;
-    font-size: 56px;
-    color: var(--oro);
-    font-weight: 700;
-    line-height: 1;
-    text-shadow: 0 0 20px rgba(212,175,55,0.4);
-  }
+    .cuenta-bloque {
+      text-align: center;
+      min-width: 80px;
+    }
 
-  .cuenta-label {
-    font-size: 11px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
-    margin-top: 10px;
-  }
+    .cuenta-valor {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px;
+      color: var(--oro);
+      font-weight: 700;
+      line-height: 1;
+      text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    }
 
-  .mensaje-cumple-hoy {
-    font-family: 'Playfair Display', serif;
-    font-size: 36px;
-    color: var(--oro);
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    text-shadow: 0 0 30px rgba(212,175,55,0.6);
-    animation: latido 2s infinite ease-in-out;
-  }
+    .cuenta-label {
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 10px;
+    }
 
-  @keyframes latido {
-    0%, 100% { transform: scale(1); }
-    50%      { transform: scale(1.05); }
-  }
+    .mensaje-cumple-hoy {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      color: var(--oro);
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      text-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+      animation: latido 2s infinite ease-in-out;
+    }
 
-  /* ====== CONTROL DE MÚSICA ====== */
-  .control-musica {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: rgba(0,0,0,0.5);
-    border: 1px solid var(--oro);
-    color: var(--oro);
-    padding: 10px 20px;
-    cursor: pointer;
-    font-family: 'Playfair Display', serif;
-    letter-spacing: 3px;
-    font-size: 11px;
-    z-index: 10;
-    text-transform: uppercase;
-    transition: all 0.3s;
-    opacity: 0;
-    backdrop-filter: blur(8px);
-  }
+    @keyframes latido {
 
-  .control-musica.visible { opacity: 0.85; }
-  .control-musica:hover { background: var(--oro); color: var(--negro); opacity: 1; }
+      0%,
+      100% {
+        transform: scale(1);
+      }
 
-  iframe#audio {
-    position: fixed;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    pointer-events: none;
-    border: 0;
-  }
+      50% {
+        transform: scale(1.05);
+      }
+    }
 
-  /* ====== FIRMA INFERIOR ====== */
-  .firma {
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-    color: var(--oro-suave);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 14px;
-    font-style: italic;
-    letter-spacing: 4px;
-    z-index: 10;
-    opacity: 0;
-    transition: opacity 2s ease 3s;
-  }
+    /* ====== CONTROL DE MÚSICA ====== */
+    .control-musica {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--oro);
+      color: var(--oro);
+      padding: 10px 20px;
+      cursor: pointer;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 3px;
+      font-size: 11px;
+      z-index: 10;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      opacity: 0;
+      backdrop-filter: blur(8px);
+    }
 
-  .firma.visible { opacity: 0.7; }
+    .control-musica.visible {
+      opacity: 0.85;
+    }
 
-  /* ====== RESPONSIVE ====== */
-  @media (max-width: 800px) {
-    h1 { font-size: 80px; letter-spacing: 6px; }
-    .edad { font-size: 22px; letter-spacing: 8px; }
-    .mensaje { font-size: 17px; max-width: 90%; }
-    .cuenta { gap: 16px; }
-    .cuenta-valor { font-size: 36px; }
-    .ornament-line { width: 50px; }
-    #inicio h2 { font-size: 52px; }
-    .firma { display: none; }
-  }
-</style>
+    .control-musica:hover {
+      background: var(--oro);
+      color: var(--negro);
+      opacity: 1;
+    }
+
+    iframe#audio {
+      position: fixed;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+      border: 0;
+    }
+
+    /* ====== FIRMA INFERIOR ====== */
+    .firma {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      color: var(--oro-suave);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      font-style: italic;
+      letter-spacing: 4px;
+      z-index: 10;
+      opacity: 0;
+      transition: opacity 2s ease 3s;
+    }
+
+    .firma.visible {
+      opacity: 0.7;
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 800px) {
+      h1 {
+        font-size: 80px;
+        letter-spacing: 6px;
+      }
+
+      .edad {
+        font-size: 22px;
+        letter-spacing: 8px;
+      }
+
+      .mensaje {
+        font-size: 17px;
+        max-width: 90%;
+      }
+
+      .cuenta {
+        gap: 16px;
+      }
+
+      .cuenta-valor {
+        font-size: 36px;
+      }
+
+      .ornament-line {
+        width: 50px;
+      }
+
+      #inicio h2 {
+        font-size: 52px;
+      }
+
+      .firma {
+        display: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- PANTALLA INICIAL -->
-<div id="inicio">
-  <div class="saludo">Para</div>
-  <h2>Iván</h2>
-  <p>Tu regalo está esperando</p>
-  <button class="btn-abrir" onclick="empezar()">Abrir</button>
-</div>
-
-<!-- FONDO SLIDESHOW (20 fotos de Dubai) -->
-<div id="fondo">
-  <div class="slide activa" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&q=75');"></div>
-  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1600&q=75');"></div>
-  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1655309893829-407c54619f1f?w=1600&q=75');"></div>
-  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1651467606797-e1c660cf3fda?w=1600&q=75');"></div>
-  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1607414851776-f2fcc379fb48?w=1600&q=75');"></div>
-  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1550779864-6ccb28702fdb?w=1600&q=75');"></div>
-  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1615747476205-991a14cd2358?w=1600&q=75');"></div>
-  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1688671525781-d9447cf1abd2?w=1600&q=75');"></div>
-  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1612873649383-edf91f1cf7fe?w=1600&q=75');"></div>
-  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1579525612525-053cd3e8cbd7?w=1600&q=75');"></div>
-  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1462007895615-c8c073bebcd8?w=1600&q=75');"></div>
-  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1623725259601-b8c41ad6a532?w=1600&q=75');"></div>
-  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1650435331404-c1340a4c8f24?w=1600&q=75');"></div>
-  <div class="slide" style="background-image: url('https://images.unsplash.com/flagged/photo-1559717865-a99cac1c95d8?w=1600&q=75');"></div>
-  <div class="slide" style="background-image: url('https://images.unsplash.com/flagged/photo-1559717201-fbb671ff56b7?w=1600&q=75');"></div>
-  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1546412414-e1885e51cfa5?w=1600&q=75');"></div>
-  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1582672060674-bc2bd808a8f5?w=1600&q=75');"></div>
-  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1496564203457-11bb12075d90?w=1600&q=75');"></div>
-</div>
-
-<div id="overlay"></div>
-<canvas id="fuegos"></canvas>
-
-<!-- CONTENIDO PRINCIPAL -->
-<div id="contenido">
-  <p class="fecha">27 · V · MMXXVI</p>
-
-  <h1>IVÁN</h1>
-
-  <div class="ornament">
-    <div class="ornament-line"></div>
-    <div class="ornament-symbol">✦</div>
-    <div class="ornament-line"></div>
+  <!-- PANTALLA INICIAL -->
+  <div id="inicio">
+    <div class="saludo">Para</div>
+    <h2>Iván</h2>
+    <p>Tu regalo está esperando</p>
+    <button class="btn-abrir" onclick="empezar()">Abrir</button>
   </div>
 
-  <div class="edad">Diecinueve</div>
-
-  <div class="mensaje">
-    Diecinueve años de fuerza, disciplina y carácter.<br>
-    Que este año supere cada peso, cada límite,<br>
-    cada meta que te propongas alcanzar.
+  <!-- FONDO SLIDESHOW (20 fotos de Dubai) -->
+  <div id="fondo">
+    <div class="slide activa"
+      style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&q=75');"></div>
+    <div class="slide"
+      style="background-image: url('https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1600&q=75');"></div>
+    <div class="slide"
+      style="background-image: url('https://images.unsplash.com/photo-1655309893829-407c54619f1f?w=1600&q=75');"></div>
+    <div class="slide"
+      style="background-image: url('https://images.unsplash.com/photo-1651467606797-e1c660cf3fda?w=1600&q=75');"></div>
+    <div class="slide"
+      style="background-image: url('https://images.unsplash.com/photo-1607414851776-f2fcc379fb48?w=1600&q=75');"></div>
+    <div class="slide"
+      style="background-image: url('https://images.unsplash.com/photo-1550779864-6ccb28702fdb?w=1600&q=75');"></div>
+    <div class="slide"
+      style="background-image: url('https://images.unsplash.com/photo-1615747476205-991a14cd2358?w=1600&q=75');"></div>
+    <div class="slide"
+      style="background-image: url('https://images.unsplash.com/photo-1688671525781-d9447cf1abd2?w=1600&q=75');"></div>
+    <div class="slide"
+      style="background-image: url('https://images.unsplash.com/photo-1612873649383-edf91f1cf7fe?w=1600&q=75');"></div>
+    <div class="slide"
+      style="background-image: url('https://images.unsplash.com/photo-1579525612525-053cd3e8cbd7?w=1600&q=75');"></div>
+    <div class="slide"
+      style="background-image: url('https://images.unsplash.com/photo-1462007895615-c8c073bebcd8?w=1600&q=75');"></div>
+    <div class="slide"
+      style="background-image: url('https://images.unsplash.com/photo-1623725259601-b8c41ad6a532?w=1600&q=75');"></div>
+    <div class="slide"
+      style="background-image: url('https://images.unsplash.com/photo-1650435331404-c1340a4c8f24?w=1600&q=75');"></div>
+    <div class="slide"
+      style="background-image: url('https://images.unsplash.com/flagged/photo-1559717865-a99cac1c95d8?w=1600&q=75');">
+    </div>
+    <div class="slide"
+      style="background-image: url('https://images.unsplash.com/flagged/photo-1559717201-fbb671ff56b7?w=1600&q=75');">
+    </div>
+    <div class="slide"
+      style="background-image: url('https://images.unsplash.com/photo-1546412414-e1885e51cfa5?w=1600&q=75');"></div>
+    <div class="slide"
+      style="background-image: url('https://images.unsplash.com/photo-1582672060674-bc2bd808a8f5?w=1600&q=75');"></div>
+    <div class="slide"
+      style="background-image: url('https://images.unsplash.com/photo-1496564203457-11bb12075d90?w=1600&q=75');"></div>
   </div>
 
-  <div class="cuenta" id="cuentaAtras"></div>
-</div>
+  <div id="overlay"></div>
+  <canvas id="fuegos"></canvas>
 
-<!-- Música -->
-<button class="control-musica" id="btnMusica" onclick="toggleMusica()">♪ Pausar música</button>
-<div class="firma" id="firma">— Con cariño</div>
+  <!-- CONTENIDO PRINCIPAL -->
+  <div id="contenido">
+    <p class="fecha">XXVII · V · MMXXVI</p>
 
-<audio id="audio" loop>
-  <source src="musica_cumple.mp3" type="audio/mpeg">
-  Tu navegador no soporta audio HTML5
-</audio>
+    <h1>IVÁN</h1>
 
-<script>
-  let musicaActiva = true;
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-symbol">✦</div>
+      <div class="ornament-line"></div>
+    </div>
 
-  function empezar() {
-    document.getElementById('inicio').classList.add('fuera');
-    document.getElementById('contenido').classList.add('visible');
-    document.getElementById('btnMusica').classList.add('visible');
-    document.getElementById('firma').classList.add('visible');
+    <div class="edad">Diecinueve</div>
 
-    // Reproducir música (autoplay permitido tras click del usuario)
-    const audio = document.getElementById('audio');
-    audio.play().catch(err => console.log('Error al reproducir:', err));
+    <div class="cuenta" id="cuentaAtras"></div>
+  </div>
 
-    iniciarSlideshow();
-    iniciarFuegos();
-    actualizarCuentaAtras();
-    setInterval(actualizarCuentaAtras, 1000);
-  }
+  <!-- Música -->
+  <button class="control-musica" id="btnMusica" onclick="toggleMusica()">♪ Pausar música</button>
+  <div class="firma" id="firma">— Con cariño</div>
 
-  // ====== SLIDESHOW (con precarga inteligente) ======
-  function iniciarSlideshow() {
-    const slides = document.querySelectorAll('.slide');
+  <audio id="audio" loop>
+    <source src="musica_cumple.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5
+  </audio>
 
-    // Precargar TODAS las imágenes en segundo plano
-    slides.forEach(slide => {
-      const url = slide.style.backgroundImage.replace(/url\(["']?(.*?)["']?\)/, '$1');
-      const img = new Image();
-      img.src = url;
-    });
+  <script>
+    let musicaActiva = true;
 
-    let actual = 0;
-    setInterval(() => {
-      slides[actual].classList.remove('activa');
-      actual = (actual + 1) % slides.length;
-      slides[actual].classList.add('activa');
-    }, 5000);
-  }
+    function empezar() {
+      document.getElementById('inicio').classList.add('fuera');
+      document.getElementById('contenido').classList.add('visible');
+      document.getElementById('btnMusica').classList.add('visible');
+      document.getElementById('firma').classList.add('visible');
 
-  // ====== FUEGOS ARTIFICIALES ======
-  const canvas = document.getElementById('fuegos');
-  const ctx = canvas.getContext('2d');
-  let particulas = [];
-  let fuegosCorriendo = false;
+      // Reproducir música (autoplay permitido tras click del usuario)
+      const audio = document.getElementById('audio');
+      audio.play().catch(err => console.log('Error al reproducir:', err));
 
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  window.addEventListener('resize', resize);
-  resize();
+      iniciarSlideshow();
+      iniciarFuegos();
+      actualizarCuentaAtras();
+      setInterval(actualizarCuentaAtras, 1000);
+    }
 
-  const colores = ['#d4af37','#ffd700','#f4d97a','#fff8dc','#ffffff','#ffaa00','#ffe4b5'];
+    // ====== SLIDESHOW (con precarga inteligente) ======
+    function iniciarSlideshow() {
+      const slides = document.querySelectorAll('.slide');
 
-  function crearExplosion(x, y) {
-    const color = colores[Math.floor(Math.random() * colores.length)];
-    const count = 70 + Math.floor(Math.random() * 50);
-    for (let i = 0; i < count; i++) {
-      const ang = (i / count) * Math.PI * 2;
-      const vel = 2 + Math.random() * 5;
-      particulas.push({
-        x, y,
-        vx: Math.cos(ang) * vel,
-        vy: Math.sin(ang) * vel,
-        vida: 1,
-        color: color,
-        tam: 1.5 + Math.random() * 2
+      // Precargar TODAS las imágenes en segundo plano
+      slides.forEach(slide => {
+        const url = slide.style.backgroundImage.replace(/url\(["']?(.*?)["']?\)/, '$1');
+        const img = new Image();
+        img.src = url;
       });
-    }
-  }
 
-  function animarFuegos() {
-    ctx.fillStyle = 'rgba(10,10,10,0.18)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    particulas = particulas.filter(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-      p.vy += 0.04;
-      p.vida -= 0.012;
-      if (p.vida <= 0) return false;
-
-      ctx.globalAlpha = p.vida;
-      ctx.fillStyle = p.color;
-      ctx.shadowBlur = 14;
-      ctx.shadowColor = p.color;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.tam, 0, Math.PI * 2);
-      ctx.fill();
-      return true;
-    });
-
-    ctx.globalAlpha = 1;
-    ctx.shadowBlur = 0;
-
-    if (fuegosCorriendo || particulas.length > 0) {
-      requestAnimationFrame(animarFuegos);
-    }
-  }
-
-  function iniciarFuegos() {
-    fuegosCorriendo = true;
-    animarFuegos();
-    const intervalo = setInterval(() => {
-      const x = Math.random() * canvas.width;
-      const y = canvas.height * 0.2 + Math.random() * canvas.height * 0.4;
-      crearExplosion(x, y);
-    }, 650);
-    setTimeout(() => {
-      clearInterval(intervalo);
-      fuegosCorriendo = false;
-    }, 14000);
-  }
-
-  // ====== CUENTA ATRÁS ======
-  function actualizarCuentaAtras() {
-    const ahora = new Date();
-    const esCumple = ahora.getMonth() === 4 && ahora.getDate() === 27;
-
-    if (esCumple) {
-      document.getElementById('cuentaAtras').innerHTML =
-        '<div class="mensaje-cumple-hoy">🎂 Hoy es tu día 🎂</div>';
-      return;
+      let actual = 0;
+      setInterval(() => {
+        slides[actual].classList.remove('activa');
+        actual = (actual + 1) % slides.length;
+        slides[actual].classList.add('activa');
+      }, 5000);
     }
 
-    let anio = ahora.getFullYear();
-    if (ahora.getMonth() > 4 || (ahora.getMonth() === 4 && ahora.getDate() > 27)) {
-      anio++;
-    }
-    const cumple = new Date(anio, 4, 27, 0, 0, 0);
-    const diff = cumple - ahora;
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
+    // ====== FUEGOS ARTIFICIALES ======
+    const canvas = document.getElementById('fuegos');
+    const ctx = canvas.getContext('2d');
+    let particulas = [];
+    let fuegosCorriendo = false;
 
-    document.getElementById('cuentaAtras').innerHTML = `
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    const colores = ['#d4af37', '#ffd700', '#f4d97a', '#fff8dc', '#ffffff', '#ffaa00', '#ffe4b5'];
+
+    function crearExplosion(x, y) {
+      const color = colores[Math.floor(Math.random() * colores.length)];
+      const count = 70 + Math.floor(Math.random() * 50);
+      for (let i = 0; i < count; i++) {
+        const ang = (i / count) * Math.PI * 2;
+        const vel = 2 + Math.random() * 5;
+        particulas.push({
+          x, y,
+          vx: Math.cos(ang) * vel,
+          vy: Math.sin(ang) * vel,
+          vida: 1,
+          color: color,
+          tam: 1.5 + Math.random() * 2
+        });
+      }
+    }
+
+    function animarFuegos() {
+      ctx.fillStyle = 'rgba(10,10,10,0.18)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      particulas = particulas.filter(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.04;
+        p.vida -= 0.012;
+        if (p.vida <= 0) return false;
+
+        ctx.globalAlpha = p.vida;
+        ctx.fillStyle = p.color;
+        ctx.shadowBlur = 14;
+        ctx.shadowColor = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.tam, 0, Math.PI * 2);
+        ctx.fill();
+        return true;
+      });
+
+      ctx.globalAlpha = 1;
+      ctx.shadowBlur = 0;
+
+      if (fuegosCorriendo || particulas.length > 0) {
+        requestAnimationFrame(animarFuegos);
+      }
+    }
+
+    function iniciarFuegos() {
+      fuegosCorriendo = true;
+      animarFuegos();
+      const intervalo = setInterval(() => {
+        const x = Math.random() * canvas.width;
+        const y = canvas.height * 0.2 + Math.random() * canvas.height * 0.4;
+        crearExplosion(x, y);
+      }, 650);
+      setTimeout(() => {
+        clearInterval(intervalo);
+        fuegosCorriendo = false;
+      }, 14000);
+    }
+
+    // ====== CUENTA ATRÁS ======
+    function actualizarCuentaAtras() {
+      const ahora = new Date();
+      const esCumple = ahora.getMonth() === 4 && ahora.getDate() === 27;
+
+      if (esCumple) {
+        document.getElementById('cuentaAtras').innerHTML =
+          '<div class="mensaje-cumple-hoy">🎂 Hoy es tu día 🎂</div>';
+        return;
+      }
+
+      let anio = ahora.getFullYear();
+      if (ahora.getMonth() > 4 || (ahora.getMonth() === 4 && ahora.getDate() > 27)) {
+        anio++;
+      }
+      const cumple = new Date(anio, 4, 27, 0, 0, 0);
+      const diff = cumple - ahora;
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+
+      document.getElementById('cuentaAtras').innerHTML = `
       <div class="cuenta-bloque">
-        <div class="cuenta-valor">${String(d).padStart(2,'0')}</div>
+        <div class="cuenta-valor">${String(d).padStart(2, '0')}</div>
         <div class="cuenta-label">Días</div>
       </div>
       <div class="cuenta-bloque">
-        <div class="cuenta-valor">${String(h).padStart(2,'0')}</div>
+        <div class="cuenta-valor">${String(h).padStart(2, '0')}</div>
         <div class="cuenta-label">Horas</div>
       </div>
       <div class="cuenta-bloque">
-        <div class="cuenta-valor">${String(m).padStart(2,'0')}</div>
+        <div class="cuenta-valor">${String(m).padStart(2, '0')}</div>
         <div class="cuenta-label">Minutos</div>
       </div>
       <div class="cuenta-bloque">
-        <div class="cuenta-valor">${String(s).padStart(2,'0')}</div>
+        <div class="cuenta-valor">${String(s).padStart(2, '0')}</div>
         <div class="cuenta-label">Segundos</div>
       </div>
     `;
-  }
-
-  // ====== CONTROL MÚSICA ======
-  function toggleMusica() {
-    const audio = document.getElementById('audio');
-    const btn = document.getElementById('btnMusica');
-    if (musicaActiva) {
-      audio.pause();
-      btn.innerHTML = '♪ Activar música';
-      musicaActiva = false;
-    } else {
-      audio.play();
-      btn.innerHTML = '♪ Pausar música';
-      musicaActiva = true;
     }
-  }
-</script>
+
+    // ====== CONTROL MÚSICA ======
+    function toggleMusica() {
+      const audio = document.getElementById('audio');
+      const btn = document.getElementById('btnMusica');
+      if (musicaActiva) {
+        audio.pause();
+        btn.innerHTML = '♪ Activar música';
+        musicaActiva = false;
+      } else {
+        audio.play();
+        btn.innerHTML = '♪ Pausar música';
+        musicaActiva = true;
+      }
+    }
+  </script>
 </body>
+
 </html>
