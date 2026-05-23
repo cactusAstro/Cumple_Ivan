@@ -434,9 +434,6 @@
 
     <div class="edad">Diecinueve</div>
 
-    <div class="mensaje">
-      Viva el puto Drill
-    </div>
 
     <div class="cuenta" id="cuentaAtras"></div>
   </div>
@@ -445,17 +442,12 @@
   <button class="control-musica" id="btnMusica" onclick="toggleMusica()">♪ Pausar música</button>
   <div class="firma" id="firma">— Con cariño</div>
 
-  <iframe id="audio" src="" allow="autoplay; encrypted-media"></iframe>
+  <audio id="audio" loop>
+    <source src="musica_cumple.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5
+  </audio>
 
   <script>
-    // ========= ID DE LA CANCIÓN ===========
-    // Aquí va el ID de "Toca" de Morad en YouTube.
-    // Si la música no suena bien, abre YouTube, busca "Morad Toca",
-    // copia la URL del video y reemplaza VIDEO_ID por la parte
-    // que viene después de "v=" en la URL.
-    const VIDEO_ID = 'kLmI5kKwjeA';
-    // =====================================
-
     let musicaActiva = true;
 
     function empezar() {
@@ -464,9 +456,9 @@
       document.getElementById('btnMusica').classList.add('visible');
       document.getElementById('firma').classList.add('visible');
 
-      // Música (autoplay solo permitido tras click del usuario)
-      document.getElementById('audio').src =
-        `https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&loop=1&playlist=${VIDEO_ID}&controls=0&mute=0&playsinline=1`;
+      // Reproducir música (autoplay permitido tras click del usuario)
+      const audio = document.getElementById('audio');
+      audio.play().catch(err => console.log('Error al reproducir:', err));
 
       iniciarSlideshow();
       iniciarFuegos();
@@ -607,11 +599,11 @@
       const audio = document.getElementById('audio');
       const btn = document.getElementById('btnMusica');
       if (musicaActiva) {
-        audio.src = '';
+        audio.pause();
         btn.innerHTML = '♪ Activar música';
         musicaActiva = false;
       } else {
-        audio.src = `https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&loop=1&playlist=${VIDEO_ID}&controls=0&mute=0&playsinline=1`;
+        audio.play();
         btn.innerHTML = '♪ Pausar música';
         musicaActiva = true;
       }
