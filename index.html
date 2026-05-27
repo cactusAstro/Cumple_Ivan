@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>19 · Iván</title>
+  <title>20 · Iván</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -207,21 +207,6 @@
       margin-top: 10px;
     }
 
-    .mensaje-cumple-hoy {
-      font-family: 'Playfair Display', serif;
-      font-size: 36px;
-      color: var(--oro);
-      letter-spacing: 6px;
-      text-transform: uppercase;
-      text-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
-      animation: latido 2s infinite ease-in-out;
-    }
-
-    @keyframes latido {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
     /* ====== CONTROL DE MÚSICA ====== */
     .control-musica {
       position: fixed;
@@ -268,7 +253,7 @@
   <div id="inicio">
     <div class="saludo">Para</div>
     <h2>Iván</h2>
-    <p>Tu regalo está esperando</p>
+    <p>El camino hacia los 20</p>
     <button class="btn-abrir" onclick="empezar()">Abrir</button>
   </div>
 
@@ -276,7 +261,7 @@
 
   <!-- CONTENIDO PRINCIPAL -->
   <div id="contenido">
-    <p class="fecha">XXVII · V · MMXXVI</p>
+    <p class="fecha">XXVII · V · MMXXVII</p>
 
     <h1>IVÁN</h1>
 
@@ -286,7 +271,7 @@
       <div class="ornament-line"></div>
     </div>
 
-    <div class="edad">Diecinueve</div>
+    <div class="edad">Veinte</div>
 
     <div class="cuenta" id="cuentaAtras"></div>
   </div>
@@ -384,46 +369,54 @@
       }, 650);
     }
 
-    // ====== CUENTA ATRÁS ======
+    // ====== CUENTA ATRÁS AL PRÓXIMO CUMPLEAÑOS (27 MAYO 2027) ======
     function actualizarCuentaAtras() {
       const ahora = new Date();
-      const esCumple = ahora.getMonth() === 4 && ahora.getDate() === 27;
 
-      if (esCumple) {
-        document.getElementById('cuentaAtras').innerHTML =
-          '<div class="mensaje-cumple-hoy">🎂 Hoy es tu día 🎂</div>';
+      // Cumpleaños fijo: 27 de mayo de 2027
+      const cumple = new Date(2027, 4, 27, 0, 0, 0);
+      const diff = cumple - ahora;
+
+      // Si ya pasó (después del 27/05/2027), recalcular para el siguiente año
+      if (diff < 0) {
+        const anioActual = ahora.getFullYear();
+        let anioSiguiente = anioActual;
+        if (ahora.getMonth() > 4 || (ahora.getMonth() === 4 && ahora.getDate() >= 27)) {
+          anioSiguiente = anioActual + 1;
+        }
+        const cumpleFuturo = new Date(anioSiguiente, 4, 27, 0, 0, 0);
+        const diffFuturo = cumpleFuturo - ahora;
+        mostrarCuenta(diffFuturo);
         return;
       }
 
-      let anio = ahora.getFullYear();
-      if (ahora.getMonth() > 4 || (ahora.getMonth() === 4 && ahora.getDate() > 27)) {
-        anio++;
-      }
-      const cumple = new Date(anio, 4, 27, 0, 0, 0);
-      const diff = cumple - ahora;
+      mostrarCuenta(diff);
+    }
+
+    function mostrarCuenta(diff) {
       const d = Math.floor(diff / 86400000);
       const h = Math.floor((diff % 86400000) / 3600000);
       const m = Math.floor((diff % 3600000) / 60000);
       const s = Math.floor((diff % 60000) / 1000);
 
       document.getElementById('cuentaAtras').innerHTML = `
-      <div class="cuenta-bloque">
-        <div class="cuenta-valor">${String(d).padStart(2, '0')}</div>
-        <div class="cuenta-label">Días</div>
-      </div>
-      <div class="cuenta-bloque">
-        <div class="cuenta-valor">${String(h).padStart(2, '0')}</div>
-        <div class="cuenta-label">Horas</div>
-      </div>
-      <div class="cuenta-bloque">
-        <div class="cuenta-valor">${String(m).padStart(2, '0')}</div>
-        <div class="cuenta-label">Minutos</div>
-      </div>
-      <div class="cuenta-bloque">
-        <div class="cuenta-valor">${String(s).padStart(2, '0')}</div>
-        <div class="cuenta-label">Segundos</div>
-      </div>
-    `;
+        <div class="cuenta-bloque">
+          <div class="cuenta-valor">${String(d).padStart(3, '0')}</div>
+          <div class="cuenta-label">Días</div>
+        </div>
+        <div class="cuenta-bloque">
+          <div class="cuenta-valor">${String(h).padStart(2, '0')}</div>
+          <div class="cuenta-label">Horas</div>
+        </div>
+        <div class="cuenta-bloque">
+          <div class="cuenta-valor">${String(m).padStart(2, '0')}</div>
+          <div class="cuenta-label">Minutos</div>
+        </div>
+        <div class="cuenta-bloque">
+          <div class="cuenta-valor">${String(s).padStart(2, '0')}</div>
+          <div class="cuenta-label">Segundos</div>
+        </div>
+      `;
     }
 
     // ====== CONTROL MÚSICA ======
